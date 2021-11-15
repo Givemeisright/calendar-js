@@ -1,0 +1,21 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: normal;
+    text-align: center;
+}
+ol,ul{
+    list-style: none;
+}
+button{
+    font: inherit;
+    outline: none;
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 3px;
+    padding:0 8px;
+    font-size: 12px;
+    height: 24px;
+}

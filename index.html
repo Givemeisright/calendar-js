@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <title>日历</title>
+    <link rel="stylesheet" href="./global.css">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <header class="siteHeader">
+        <h1>一个日历</h1>
+    </header>
+    <div class="calendar">
+        <div class="calendar-header">
+            <time id="time"></time>
+        </div>
+        <ol class="calendar-weekdays">
+            <li>日</li>
+            <li>一</li>
+            <li>二</li>
+            <li>三</li>
+            <li>四</li>
+            <li>五</li>
+            <li>六</li>
+            
+        </ol>
+        <ol class="calendar-days" id="days">
+            
+        </ol>
+        <div class="calendar-actions">
+            <div class="calendar-actions-left">
+                <button onclick="toDay()">今天</button>
+            </div>
+            <div class="calendar-actions-right">
+                <button onclick="lastMoth()">上个月</button>
+                <button onclick="nextMoth()">下个月</button>
+            </div>
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+
+</html>
