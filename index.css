@@ -50,6 +50,23 @@
     text-align: center;
     height: 42px;
     line-height: 42px;
+    position: relative;
+}
+
+.calender-days-selected{
+    outline: rgba(146, 202, 255, 0.74) solid 1px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.calender-days-hasEvents::after{
+    content: '';
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    border-radius: 4px;
+    width: 6px;
+    height: 6px;
+    background: rgb(27, 177, 27);
 }
 
 .calendar-actions {
@@ -67,9 +84,9 @@
 }
 
 .calendar-days>li:hover {
-    outline: rgba(146, 202, 255, 0.74) solid 1px;
-    border-radius: 10px;
     cursor: pointer;
+    font-size: 120%;
+    color: rgb(255, 93, 52);
 }
 
 .calendar-days-gray {
@@ -81,4 +98,9 @@
 .calendar-days-today {
     background: rgba(146, 202, 255, 0.74);
     border-radius: 10px;
+}
+
+.active{
+    margin: 10px;
+    font-size: 18px;
 }

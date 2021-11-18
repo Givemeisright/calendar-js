@@ -52,7 +52,7 @@ function main(currentMoth) {
                 days.prepend(li)
             }
         }
-
+        let selectedLi
         const toDay = new Date()
         // 添加日期到表中
         for (let i = 1; i <= daysOfCurrentMonth; i++) {
@@ -60,6 +60,45 @@ function main(currentMoth) {
             li.textContent = i
             if (i === toDay.getDate() && month === toDay.getMonth() + 1 && year === toDay.getFullYear()) {
                 li.classList.add('calendar-days-today')
+            }
+            
+            li.onclick = () => {
+                if (selectedLi) {
+                    selectedLi.classList.remove('calender-days-selected')
+                }
+                li.classList.add('calender-days-selected')
+                selectedLi = li
+                if (events) {
+                    const fragment =document.createDocumentFragment()
+                    events.map(event=>{
+                        const div =document.createElement('div')
+                        div.textContent=event
+                        fragment.append(div)
+                    })
+                    document.querySelector('#events').innerHTML=''
+                    document.querySelector('#events').append(fragment)
+
+                }else{
+                    document.querySelector('#events').innerHTML='<div>无</div>'
+                }
+            }
+            const key = `${year}-${month}-${i}`
+            const events = window.data[key]
+            if (events) {
+                li.classList.add('calender-days-hasEvents')
+            }
+            if (events) {
+                const fragment =document.createDocumentFragment()
+                events.map(event=>{
+                    const div =document.createElement('div')
+                    div.textContent=event
+                    fragment.append(div)
+                })
+                document.querySelector('#events').innerHTML=''
+                document.querySelector('#events').append(fragment)
+
+            }else{
+                document.querySelector('#events').innerHTML='<i>选择日期以显示日程</i>'
             }
             days.append(li)
         }
@@ -105,16 +144,16 @@ function main(currentMoth) {
 
 
 function nextMoth() {
-    const firstDayOfNextMonth = new Date(now.getFullYear(), now.getMonth()+1, 1)
+    const firstDayOfNextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1)
     main(firstDayOfNextMonth)
 }
 
 function lastMoth() {
-    const firstDayOfCurrentMonth = new Date(now.getFullYear(),now.getMonth(), 1) 
+    const firstDayOfCurrentMonth = new Date(now.getFullYear(), now.getMonth(), 1)
     const oneDay = 86400 * 1000
-    main(new Date(firstDayOfCurrentMonth-oneDay))
+    main(new Date(firstDayOfCurrentMonth - oneDay))
 }
 
 function toDay() {
     main(new Date())
-} 
+}
